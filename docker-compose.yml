@@ -1,0 +1,44 @@
+version: '3'
+services:
+  backend:
+    container_name: backend # You can change container_name 
+    restart: always
+    build:
+      context: './'
+    expose:
+      - "9000"
+    ports: # You can change your port number according your need
+      - "9000:9000"                          
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    env_file:
+      - './.env'
+    stdin_open: true
+    tty: true
+    environment:
+      DEBUG: 'true'
+    # If you change port number then change command port number
+    command: 'sh -c "/code/entrypoint.sh && exec python3 manage.py runserver 0.0.0.0:9000"'
+
+  db:
+    image: postgres:14.8-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: $DB_NAME
+      POSTGRES_USER: $DB_USER
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_HOST_AUTH_METHOD: trust
+      restart: always
+    
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+  redis:
+    image: "redis:alpine"
+
+volumes:
+  postgres_data:
+

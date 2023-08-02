@@ -19,9 +19,6 @@ Docker 24.0.2
 to setup a new admin you can run
 `docker-compose exec backend python manage.py createsuperuser`
 
-then login at
-`localhost:9000/admin/`
-
 for the graphql entrypoint you can use
 `http://localhost:8000/graphql`
 

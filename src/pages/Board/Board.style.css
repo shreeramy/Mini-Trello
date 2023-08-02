@@ -1,0 +1,29 @@
+.task_status {
+  width: 250px;
+  background-color: rgb(235, 236, 240);
+  margin-left: 15px;
+  height: 243px;
+  max-height: fit-content;
+}
+
+.card {
+  width: 100%;
+  min-height: 200px;
+  max-height: fit-content;
+  background-color: rgb(235, 236, 240);
+  border: none;
+}
+body {
+  background-color: rgb(76, 154, 255);
+}
+.card_heading {
+  color: rgb(9, 30, 66);
+  margin-top: 5px;
+}
+.modal-content {
+  width: 100% !important;
+  left: 20px !important;
+}
+.modal-backdrop {
+  background-color: transparent !important;
+}
